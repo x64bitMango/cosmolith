@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	
 	# Transform direction to local basis
 	var direction = (yaw_node.transform.basis * input).normalized()
-	apply_central_force(direction * 1200.0 * delta)
+	apply_central_force(direction * 1300.0 * delta)
 
 	# Escape to show mouse
 	if Input.is_action_just_pressed("ui_cancel"):

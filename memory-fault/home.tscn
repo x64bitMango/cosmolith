@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4dnpc6nyuia7"]
+[gd_scene load_steps=9 format=3 uid="uid://b4dnpc6nyuia7"]
 
+[ext_resource type="Texture2D" uid="uid://dyo56ndpbb22y" path="res://textures/Dark/texture_09.png" id="1_1ey7h"]
 [ext_resource type="PackedScene" uid="uid://dfynh64yn6mid" path="res://player.tscn" id="1_tt30a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0o1r"]
@@ -18,6 +19,10 @@ glow_enabled = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_j0o1r"]
 size = Vector2(10, 10)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1ld7"]
+albedo_texture = ExtResource("1_1ey7h")
+uv1_scale = Vector3(20, 20, 20)
+
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1ey7h"]
 data = PackedVector3Array(5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, 5, -5, 0, -5, 5, 0, -5)
 
@@ -30,17 +35,18 @@ environment = SubResource("Environment_1ey7h")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00372034, 0, 0)
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.99327, 0, 0, 0, 1.02308, 0, 0, 0, 4.20646, -0.00372034, 0, 0)
 mesh = SubResource("PlaneMesh_j0o1r")
+surface_material_override/0 = SubResource("StandardMaterial3D_o1ld7")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1ey7h")
 
 [node name="Player" parent="." instance=ExtResource("1_tt30a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425619, 1.13811, -1.12514)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0442078, 1.43048, -0.174933)
 linear_damp = 3.0
 
 [node name="Yaw" type="Node3D" parent="Player"]
