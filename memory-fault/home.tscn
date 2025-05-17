@@ -43,5 +43,9 @@ shape = SubResource("ConcavePolygonShape3D_1ey7h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425619, 1.13811, -1.12514)
 linear_damp = 3.0
 
-[node name="Camera3D" type="Camera3D" parent="Player"]
+[node name="Yaw" type="Node3D" parent="Player"]
+
+[node name="Pitch" type="Node3D" parent="Player/Yaw"]
+
+[node name="Camera3D" type="Camera3D" parent="Player/Yaw/Pitch"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.486652, 0.068918)
